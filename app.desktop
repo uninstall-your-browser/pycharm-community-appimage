@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=PyCharm Community Edition
+Exec=pycharm %f
+Icon=Pycharm
+Comment=The pure Python IDE
+Categories=Development;IDE;
+Terminal=false
+StartupNotify=true
+StartupWMClass=jetbrains-pycharm-ce
