@@ -34,11 +34,11 @@ jobs:
           version_directory: "opt/pycharm"
       - name: Create release
         if: ${{ steps.check_update.outputs.needs_update == 'true' }}
-        run: gh release create ${{ env.APP_VERSION }} -t "${{ env.APP_NAME }} AppImage ${{ env.APP_VERSION }}"
+        run: gh release create ${{ env.APP_VERSION }} -t "${{ env.APP_NAME }} AppImage ${{ env.APP_VERSION }}" -n "Automatically generated release"
         env:
           GH_TOKEN: ${{ github.token }}
       - name: Upload binaries
         if: ${{ steps.check_update.outputs.needs_update == 'true' }}
-        run: gh release upload ${{ env.APP_VERSION }} dist/* --clobber -n "Automatically generated release"
+        run: gh release upload ${{ env.APP_VERSION }} dist/* --clobber
         env:
           GH_TOKEN: ${{ github.token }}
