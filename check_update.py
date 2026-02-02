@@ -8,8 +8,6 @@ product_release_prefix = os.environ.get("PRODUCT_RELEASE_PREFIX") + "/"
 
 g = Github(auth=Auth.Token(os.environ.get("GH_TOKEN", None)))
 
-print(f"{os.environ["GITHUB_REPOSITORY"]=}")
-
 this_repo = g.get_repo(os.environ["GITHUB_REPOSITORY"])
 
 try:
