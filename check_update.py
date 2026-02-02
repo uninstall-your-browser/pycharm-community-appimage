@@ -1,12 +1,12 @@
 import os
 from typing import Iterable
 
-from github import Github
+from github import Github, Auth
 from github.GitReleaseAsset import GitReleaseAsset
 
 product_release_prefix = os.environ.get("PRODUCT_RELEASE_PREFIX") + "/"
 
-g = Github(auth=os.environ.get("GH_TOKEN", None))
+g = Github(auth=Auth.Token(os.environ.get("GH_TOKEN", None)))
 
 print(f"{os.environ["GITHUB_REPOSITORY"]=}")
 
