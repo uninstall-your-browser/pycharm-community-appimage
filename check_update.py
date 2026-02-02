@@ -6,7 +6,7 @@ from github.GitReleaseAsset import GitReleaseAsset
 
 product_release_prefix = os.environ.get("PRODUCT_RELEASE_PREFIX") + "/"
 
-g = Github()
+g = Github(auth=os.environ.get("GH_TOKEN", None))
 
 print(f"{os.environ["GITHUB_REPOSITORY"]=}")
 
