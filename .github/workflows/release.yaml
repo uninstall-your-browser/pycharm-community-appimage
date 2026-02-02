@@ -18,6 +18,9 @@ jobs:
       - name: Check for update
         id: check_update
         run: uv run python check_update.py
+        env:
+            PRODUCT_RELEASE_PREFIX: "pycharm"
+
       - name: Build
         if: ${{ steps.check_update.outputs.needs_update == 'true' }}
         id: build

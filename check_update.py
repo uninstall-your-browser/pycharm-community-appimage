@@ -4,13 +4,14 @@ from typing import Iterable
 from github import Github
 from github.GitReleaseAsset import GitReleaseAsset
 
-product_release_prefix = os.environ.get("PRODUCT_RELEASE_PREFIX", "pycharm") + "/"
-gh_user = os.environ.get("GH_USER", "uninstall-your-browser")
-gh_repo = os.environ.get("GH_REPO", "pycharm-appimage")
+product_release_prefix = os.environ.get("PRODUCT_RELEASE_PREFIX") + "/"
 
 g = Github()
 
-this_repo = g.get_repo(f"{gh_user}/{gh_repo}")
+print(f"{os.environ["GITHUB_REPOSITORY"]=}")
+
+this_repo = g.get_repo(os.environ["GITHUB_REPOSITORY"])
+
 try:
     latest_custom_release = this_repo.get_releases()[0].tag_name
 except IndexError:
@@ -56,5 +57,4 @@ for release in jetbrains_repo.get_releases():
     else:
         print(f"Ignored release {release_name}")
 else:
-    print("Didn't find shit, assuming we need to make a release")
-    set_output("needs_update", "true")
+    raise RuntimeError("WHERE ARE THE RELEASES????")
