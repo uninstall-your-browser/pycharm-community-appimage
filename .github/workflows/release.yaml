@@ -39,6 +39,6 @@ jobs:
           GH_TOKEN: ${{ github.token }}
       - name: Upload binaries
         if: ${{ steps.check_update.outputs.needs_update == 'true' }}
-        run: gh release upload ${{ env.APP_VERSION }} dist/* --clobber
+        run: gh release upload ${{ env.APP_VERSION }} dist/* --clobber -n "Automatically generated release"
         env:
           GH_TOKEN: ${{ github.token }}
