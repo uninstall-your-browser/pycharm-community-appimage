@@ -1,7 +1,7 @@
 import os
 from typing import Iterable
 
-from github import Github, Auth
+from github import Auth, Github
 from github.GitReleaseAsset import GitReleaseAsset
 
 product_release_prefix = os.environ.get("PRODUCT_RELEASE_PREFIX") + "/"
@@ -45,7 +45,10 @@ for release in jetbrains_repo.get_releases():
         print(f"{latest_custom_release=} {latest_product_version=}, {needs_update=}")
 
         if needs_update:
-            set_output("download_url", find_linux_release_asset(release.assets).browser_download_url)
+            set_output(
+                "download_url",
+                find_linux_release_asset(release.assets).browser_download_url,
+            )
 
         set_output(
             "needs_update",
