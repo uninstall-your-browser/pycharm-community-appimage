@@ -21,7 +21,7 @@ jobs:
             working-directory: "update_checker"
       - name: Check for update
         id: check_update
-        run: uv run python check_update.py
+        run: uv run python update_checker/check_update.py
         env:
             PRODUCT_RELEASE_PREFIX: "pycharm"
             GH_TOKEN: ${{ github.token }}
