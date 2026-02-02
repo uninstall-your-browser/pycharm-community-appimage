@@ -21,7 +21,7 @@ jetbrains_repo = g.get_repo("JetBrains/intellij-community", lazy=True)
 
 
 def set_output(name: str, value: str):
-    if os.environ.get("GITHUB_RUNNING_ACTION", "false") == "true":
+    if os.environ.get("GITHUB_ACTIONS", "false") == "true":
         with open(os.environ["GITHUB_OUTPUT"], "a") as fh:
             fh.write(f"{name}={value}\n")
     else:
